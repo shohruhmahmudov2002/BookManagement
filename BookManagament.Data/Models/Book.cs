@@ -21,7 +21,7 @@ public class Book
 public enum Genre
 {
     [EnumMember(Value = "Fiction")]
-    Fiction,
+    Fiction = 1,
     [EnumMember(Value = "Non-Fiction")]
     NonFiction,
     [EnumMember(Value = "Biography")]
