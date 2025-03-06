@@ -40,7 +40,9 @@ namespace BookManagement.Api
             builder.Services.AddSwaggerExamplesFromAssemblies(Assembly.GetExecutingAssembly());
             builder.Services.AddDbContext<BookContext>(options =>
             {
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+                    .UseSnakeCaseNamingConvention()
+                    .AddInterceptors(new AuditInterceptor());
             });
 
             builder.Services.AddScoped<IBookService, BookService>();
